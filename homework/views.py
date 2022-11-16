@@ -35,7 +35,6 @@ class AdsView(View):
     def post(self, request):
         data = json.loads(request.body)
         ads = Ads(
-            id=data['id'],
             name=data['name'],
             price=data['price'],
             author=data['author'],
@@ -81,7 +80,6 @@ class CatView(View):
     def post(self, request):
         data = json.loads(request.body)
         cat = Ads(
-            id=data['id'],
             name=data['name'],
         )
         cat.save()
