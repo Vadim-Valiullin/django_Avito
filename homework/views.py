@@ -64,7 +64,8 @@ class AdsDetailView(DetailView):
             "is_published": ad.is_published,
         })
 
-
+    
+@method_decorator(csrf_exempt, name='dispatch')
 class CatView(View):
     def get(self, request):
         cat_res = Category.objects.all()
@@ -79,7 +80,7 @@ class CatView(View):
 
     def post(self, request):
         data = json.loads(request.body)
-        cat = Ads(
+        cat = Category(
             name=data['name'],
         )
         cat.save()
